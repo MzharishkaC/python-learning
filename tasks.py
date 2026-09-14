@@ -19,4 +19,9 @@ def get_completed_tasks() ->list :
         if task["completed"] :
             completed_task.append(task)
     return completed_task
-print(get_completed_tasks())
+def complete_task(task_id: int) -> bool:
+    for task in tasks  :
+        if task["id"] == task_id:
+            task["completed"] = True
+            return True
+    return False
