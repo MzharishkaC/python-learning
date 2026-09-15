@@ -66,6 +66,14 @@ def find_task_position(task_id: int) -> int:
         if task["id"] == task_id :
             return index
     return -1
+def toggle_task(task_id: int) -> bool:
+    for task in tasks :
+        if task["id"] == task_id:
+            task["completed"] = not task["completed"]
+            return True
+    return False
+
+
 
 
 
