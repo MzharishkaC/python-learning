@@ -61,7 +61,11 @@ def count_complete_task() ->int:
         if task["completed"]:
             count += 1
     return count
-
+def find_task_position(task_id: int) -> int:
+    for index, task in enumerate(tasks):
+        if task["id"] == task_id :
+            return index
+    return -1
 
 
 
