@@ -113,3 +113,11 @@ def get_tasks_by_status(completed: bool) -> list:
         if task["completed"] == completed:
             task_status.append(task)
     return task_status
+
+
+def search_tasks(keyword: str) -> list:
+    keyword_word = []
+    for task in tasks:
+        if keyword.lower() in task["title"].lower():
+            keyword_word.append(task)
+    return keyword_word
