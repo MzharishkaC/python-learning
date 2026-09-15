@@ -121,3 +121,21 @@ def search_tasks(keyword: str) -> list:
         if keyword.lower() in task["title"].lower():
             keyword_word.append(task)
     return keyword_word
+
+
+def get_tasks_stats() -> dict:
+    total = len(tasks)
+    completed = 0
+    pending = 0
+
+    for task in tasks:
+        if task["completed"]:
+            completed += 1
+        else:
+            pending += 1
+
+    return {
+        "total": total,
+        "completed": completed,
+        "pending": pending
+    }
