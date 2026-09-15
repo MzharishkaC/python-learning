@@ -9,7 +9,6 @@ def add_task(title :str) -> None :
     tasks.append(new_dict)
 add_task("Learn Git")
 add_task("Learn Pythin Core")
-print(tasks)
 def get_tasks() -> list:
     return tasks
 print(get_tasks())
