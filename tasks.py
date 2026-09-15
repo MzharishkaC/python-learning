@@ -50,7 +50,11 @@ def get_pending_tasks() -> list:
         if task["completed"] == False:
             pending_tasks.append(task)
     return pending_tasks
-
+def get_task_by_id(task_id : int) -> dict |None:
+    for task in tasks :
+        if task["id"] == task_id:
+            return task
+    return None
 
 
 
