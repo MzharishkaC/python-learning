@@ -139,3 +139,14 @@ def get_tasks_stats() -> dict:
         "completed": completed,
         "pending": pending
     }
+
+
+def sort_tasks_by_status() -> list:
+    sorted_tasks = []
+    for task in tasks:
+        if task["completed"] == False:
+            sorted_tasks.append(task)
+    for task in tasks:
+        if task["completed"]:
+            sorted_tasks.append(task)
+    return sorted_tasks
