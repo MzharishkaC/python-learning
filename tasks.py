@@ -30,6 +30,13 @@ def delete_task(task_id: int) -> bool:
             tasks.pop(index)
             return True
     return False
+def update_task(task_id: int, new_title: str) ->bool:
+    for task in tasks :
+        if task["id"] == task_id :
+            task["title"] = new_title
+            return True
+    return False
+
 
 
 
