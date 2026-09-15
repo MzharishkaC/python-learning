@@ -7,13 +7,14 @@ def add_task(title :str) -> None :
         "completed": False
     }
     tasks.append(new_dict)
+
 add_task("Learn Git")
 add_task("Learn Pythin Core")
 
 def get_tasks() -> list:
     return tasks
 
-def get_completed_tasks() ->list :
+def get_completed_tasks() -> list :
     completed_task = []
     for task in tasks:
         if task["completed"] :
@@ -34,14 +35,14 @@ def delete_task(task_id: int) -> bool:
             return True
     return False
 
-def update_task(task_id: int, new_title: str) ->bool:
+def update_task(task_id: int, new_title: str) -> bool:
     for task in tasks :
         if task["id"] == task_id :
             task["title"] = new_title
             return True
     return False
 
-def clear_completed_task() ->int:
+def clear_completed_task() -> int:
     completed_task = 0
     complete_task = tasks.copy()
     for task in complete_task:
@@ -63,7 +64,7 @@ def get_task_by_id(task_id : int) -> dict |None:
             return task
     return None
 
-def count_complete_task() ->int:
+def count_complete_task() -> int:
     count = 0
     for task in tasks :
         if task["completed"]:
@@ -83,7 +84,7 @@ def toggle_task(task_id: int) -> bool:
             return True
     return False
 
-def get_incomplete_count() ->int:
+def get_incomplete_count() -> int:
     incomplete_task = 0
     for task in tasks:
         if  not task["completed"]:
