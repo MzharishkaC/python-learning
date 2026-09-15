@@ -24,3 +24,12 @@ def complete_task(task_id: int) -> bool:
             task["completed"] = True
             return True
     return False
+def delete_task(task_id: int) -> bool:
+    for index, task in enumerate(tasks):
+        if task["id"] == task_id:
+            tasks.pop(index)
+            return True
+    return False
+
+
+
