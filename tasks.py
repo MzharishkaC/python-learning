@@ -78,6 +78,13 @@ def get_incomplete_count() ->int:
         if  not task["completed"]:
             incomplete_task +=1
     return incomplete_task
+def get_tasks_by_status(completed: bool) -> list:
+    task_status = []
+    for task in tasks:
+        if task["completed"] == completed:
+            task_status.append(task)
+    return task_status
+
 
 
 
