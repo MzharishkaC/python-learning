@@ -44,7 +44,12 @@ def clear_completed_task() ->int:
             tasks.remove(task)
             completed_task += 1
     return completed_task
-
+def get_pending_tasks() -> list:
+    pending_tasks =[]
+    for task in tasks:
+        if task["completed"] == False:
+            pending_tasks.append(task)
+    return pending_tasks
 
 
 
