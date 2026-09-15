@@ -36,6 +36,16 @@ def update_task(task_id: int, new_title: str) ->bool:
             task["title"] = new_title
             return True
     return False
+def clear_completed_task() ->int:
+    completed_task = 0
+    complete_task = tasks.copy()
+    for task in complete_task:
+        if task["completed"] :
+            tasks.remove(task)
+            completed_task += 1
+    return completed_task
+
+
 
 
 
