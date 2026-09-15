@@ -72,6 +72,13 @@ def toggle_task(task_id: int) -> bool:
             task["completed"] = not task["completed"]
             return True
     return False
+def get_incomplete_count() ->int:
+    incomplete_task = 0
+    for task in tasks:
+        if  not task["completed"]:
+            incomplete_task +=1
+    return incomplete_task
+
 
 
 
