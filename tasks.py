@@ -55,6 +55,12 @@ def get_task_by_id(task_id : int) -> dict |None:
         if task["id"] == task_id:
             return task
     return None
+def count_complete_task() ->int:
+    count = 0
+    for task in tasks :
+        if task["completed"]:
+            count += 1
+    return count
 
 
 
