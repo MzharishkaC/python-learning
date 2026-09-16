@@ -19,14 +19,6 @@ def get_tasks() -> list:
     return tasks
 
 
-def get_completed_tasks() -> list:
-    completed_task = []
-    for task in tasks:
-        if task["completed"]:
-            completed_task.append(task)
-    return completed_task
-
-
 def complete_task(task_id: int) -> bool:
     for task in tasks:
         if task["id"] == task_id:
@@ -61,14 +53,6 @@ def clear_completed_task() -> int:
     return completed_task
 
 
-def get_pending_tasks() -> list:
-    pending_tasks = []
-    for task in tasks:
-        if task["completed"] == False:
-            pending_tasks.append(task)
-    return pending_tasks
-
-
 def get_task_by_id(task_id: int) -> dict | None:
     for task in tasks:
         if task["id"] == task_id:
@@ -76,7 +60,7 @@ def get_task_by_id(task_id: int) -> dict | None:
     return None
 
 
-def count_complete_task() -> int:
+def count_completed_task() -> int:
     count = 0
     for task in tasks:
         if task["completed"]:
@@ -115,7 +99,7 @@ def get_tasks_by_status(completed: bool) -> list:
     return task_status
 
 
-def search_tasks(keyword: str) -> list:
+def find_task(keyword: str) -> list:
     keyword_word = []
     for task in tasks:
         if keyword.lower() in task["title"].lower():
@@ -150,3 +134,23 @@ def sort_tasks_by_status() -> list:
         if task["completed"]:
             sorted_tasks.append(task)
     return sorted_tasks
+
+
+def get_tasks_by_status(status: str) -> list:
+    task_status = []
+    for task in tasks:
+        if status == "completed" and task["completed"]:
+            task_status.append(task)
+        elif status == "pending" and not task["completed"]:
+            task_status.append(task)
+    return task_status
+
+def change_task_status(task_id: int, status: str) -> bool:
+    for task in tasks:
+        if task["id"] == task_id:
+            if status == "completed":
+                task["completed"] = True
+            elif status == "pending":
+                task["completed"] = False
+            return True
+    return False
