@@ -149,12 +149,8 @@ def get_tasks_by_status(status: str) -> list:
 def change_task_status(task_id: int, status: str) -> bool:
     for task in tasks:
         if task["id"] == task_id:
-            if status == "completed":
-                task["completed"] = True
-            elif status == "pending":
-                task["completed"] = False
+            task["status"] = status
             return True
     return False
-
 # Working on status feature to merge conflict
 
