@@ -20,14 +20,6 @@ def get_tasks() -> list:
     return tasks
 
 
-def complete_task(task_id: int) -> bool:
-    for task in tasks:
-        if task["id"] == task_id:
-            task["completed"] = True
-            return True
-    return False
-
-
 def delete_task(task_id: int) -> bool:
     for index, task in enumerate(tasks):
         if task["id"] == task_id:
@@ -76,28 +68,12 @@ def find_task_position(task_id: int) -> int:
     return -1
 
 
-def toggle_task(task_id: int) -> bool:
-    for task in tasks:
-        if task["id"] == task_id:
-            task["completed"] = not task["completed"]
-            return True
-    return False
-
-
 def get_incomplete_count() -> int:
     incomplete_task = 0
     for task in tasks:
         if not task["completed"]:
             incomplete_task += 1
     return incomplete_task
-
-
-def get_tasks_by_status(completed: bool) -> list:
-    task_status = []
-    for task in tasks:
-        if task["completed"] == completed:
-            task_status.append(task)
-    return task_status
 
 
 def find_task(keyword: str) -> list:
@@ -144,6 +120,7 @@ def get_tasks_by_status(status: str) -> list:
             task_status.append(task)
     return task_status
 
+
 def change_task_status(task_id: int, status: str) -> bool:
     for task in tasks:
         if task["id"] == task_id:
@@ -151,4 +128,3 @@ def change_task_status(task_id: int, status: str) -> bool:
             return True
     return False
 # Working on status feature to merge conflict
-
