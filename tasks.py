@@ -1,14 +1,15 @@
 tasks = []
 
 
-def add_task(title: str) -> None:
+def add_task(title: str) -> dict:
     new_id = len(tasks) + 1
     new_dict = {
         "id": new_id,
         "title": title,
-        "completed": False
+        "status": "pending"
     }
     tasks.append(new_dict)
+    return new_dict
 
 
 add_task("Learn Git")
