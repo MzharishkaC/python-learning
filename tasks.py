@@ -39,8 +39,6 @@ def get_task_by_id(task_id: int) -> dict | None:
     return None
 
 
-
-
 def find_task(keyword: str) -> list:
     found_task = []
     for task in tasks:
