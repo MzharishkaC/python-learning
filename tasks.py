@@ -68,23 +68,6 @@ def find_task(keyword: str) -> list:
     return keyword_word
 
 
-def get_tasks_stats() -> dict:
-    total = len(tasks)
-    completed = 0
-    pending = 0
-
-    for task in tasks:
-        if task["completed"]:
-            completed += 1
-        else:
-            pending += 1
-
-    return {
-        "total": total,
-        "completed": completed,
-        "pending": pending
-    }
-
 
 def sort_tasks_by_status() -> list:
     sorted_tasks = []
@@ -118,4 +101,14 @@ def get_tasks_amount_by_status(status: str) -> int:
         if task["status"] == status:
             count += 1
     return count
-# Working on status feature to merge conflict
+
+def get_tasks_stats() -> dict:
+    total = len(tasks)
+    completed =  get_tasks_amount_by_status("completed")
+    pending =  get_tasks_amount_by_status("pending")
+
+    return {
+        "total": total,
+        "completed": completed,
+        "pending": pending
+    }
