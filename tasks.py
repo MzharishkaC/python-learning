@@ -32,9 +32,6 @@ def update_task(task_id: int, new_title: str) -> bool:
     return False
 
 
-
-
-
 def get_task_by_id(task_id: int) -> dict | None:
     for task in tasks:
         if task["id"] == task_id:
@@ -42,22 +39,14 @@ def get_task_by_id(task_id: int) -> dict | None:
     return None
 
 
-def find_task_position(task_id: int) -> int:
-    for index, task in enumerate(tasks):
-        if task["id"] == task_id:
-            return index
-    return -1
 
 
 def find_task(keyword: str) -> list:
-    keyword_word = []
+    found_task = []
     for task in tasks:
         if keyword.lower() in task["title"].lower():
-            keyword_word.append(task)
-    return keyword_word
-
-
-
+            found_task.append(task)
+    return found_task
 
 
 def get_tasks_by_status(status: str) -> list:
@@ -85,15 +74,22 @@ def get_tasks_amount_by_status(status: str) -> int:
 
 
 def get_tasks_stats() -> dict:
-    total = len(tasks)
-    completed = get_tasks_amount_by_status("completed")
-    pending = get_tasks_amount_by_status("pending")
-
-    return {
-        "total": total,
-        "completed": completed,
-        "pending": pending
+    stats = {
+        "total": len(tasks),
+        "by_status": {}
     }
+
+    for task in tasks:
+        status = task["status"]
+
+        if status not in stats["by_status"]:
+            stats["by_status"][status] = 0
+
+        stats["by_status"][status] += 1
+
+    return stats
+
+
 def delete_tasks_by_status(status: str) -> int:
     count = 0
     deleted_tasks = tasks.copy()
