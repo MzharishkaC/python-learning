@@ -12,10 +12,6 @@ def add_task(title: str) -> dict:
     return new_dict
 
 
-add_task("Learn Git")
-add_task("Learn Pythin Core")
-
-
 def get_tasks() -> list:
     return tasks
 
@@ -53,12 +49,6 @@ def get_task_by_id(task_id: int) -> dict | None:
     return None
 
 
-def count_completed_task() -> int:
-    count = 0
-    for task in tasks:
-        if task["completed"]:
-            count += 1
-    return count
 
 
 def find_task_position(task_id: int) -> int:
@@ -68,12 +58,6 @@ def find_task_position(task_id: int) -> int:
     return -1
 
 
-def get_incomplete_count() -> int:
-    incomplete_task = 0
-    for task in tasks:
-        if not task["completed"]:
-            incomplete_task += 1
-    return incomplete_task
 
 
 def find_task(keyword: str) -> list:
@@ -127,4 +111,11 @@ def change_task_status(task_id: int, status: str) -> bool:
             task["status"] = status
             return True
     return False
+
+def get_tasks_amount_by_status(status: str) -> int:
+    count = 0
+    for task in tasks:
+        if task["status"] == status:
+            count += 1
+    return count
 # Working on status feature to merge conflict
