@@ -140,9 +140,7 @@ def sort_tasks_by_status() -> list:
 def get_tasks_by_status(status: str) -> list:
     task_status = []
     for task in tasks:
-        if status == "completed" and task["completed"]:
-            task_status.append(task)
-        elif status == "pending" and not task["completed"]:
+        if task["status"] == status:
             task_status.append(task)
     return task_status
 
